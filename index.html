@@ -207,9 +207,10 @@
       <a href="#s3"><span class="num">03</span>할당량 먼저 이해하기</a>
       <a href="#s4"><span class="num">04</span>AI에게 수집 시키기</a>
       <a href="#s5"><span class="num">05</span>영상 골라내기</a>
-      <a href="#s6"><span class="num">06</span>화면 만들기</a>
-      <a href="#s7"><span class="num">07</span>무료로 배포하기</a>
-      <a href="#s8"><span class="num">08</span>망가지지 않게 관리</a>
+      <a href="#s6"><span class="num">06</span>디자인 먼저 정하기</a>
+      <a href="#s7"><span class="num">07</span>화면 만들기</a>
+      <a href="#s8"><span class="num">08</span>무료로 배포하기</a>
+      <a href="#s9"><span class="num">09</span>망가지지 않게 관리</a>
       <div class="sub">더 보기</div>
       <a href="#extra"><span class="num">＋</span>자주 막히는 곳</a>
     </nav>
@@ -245,9 +246,10 @@
         <a href="#s3">03 · 할당량 먼저 이해하기</a>
         <a href="#s4">04 · AI에게 수집 시키기</a>
         <a href="#s5">05 · 영상 골라내기</a>
-        <a href="#s6">06 · 화면 만들기</a>
-        <a href="#s7">07 · 무료로 배포하기</a>
-        <a href="#s8">08 · 망가지지 않게 관리</a>
+        <a href="#s6">06 · 디자인 먼저 정하기</a>
+        <a href="#s7">07 · 화면 만들기</a>
+        <a href="#s8">08 · 무료로 배포하기</a>
+        <a href="#s9">09 · 망가지지 않게 관리</a>
         <a href="#extra">＋ 자주 막히는 곳</a>
       </nav>
     </details>
@@ -274,7 +276,7 @@
 
         <div class="note info"><span class="ic">ℹ️</span><div><b>왜 API가 필요한가요</b><p>유튜브 화면을 손으로 긁어 오는 건 규칙 위반이기도 하고, 무엇보다 <strong>영상이 삭제됐는지 알 수가 없어요.</strong> API를 쓰면 제목·재생시간·공개 여부를 정확히 받아올 수 있고, 나중에 "이 영상 아직 살아 있나?"를 자동으로 확인할 수 있습니다.</p></div></div>
 
-        <div class="note tip"><span class="ic">💡</span><div><b>이 순서대로, 쉬운 것부터</b><p>API 키 → 할당량 이해 → 수집 → 선별 → 화면 → 배포. 특히 <strong>3단계(할당량)를 건너뛰면 첫날 오후에 막힙니다.</strong> 그리고 AI에게 주는 프롬프트는 <strong>전부 「쉬운 버전」과 「자세한 버전」 두 가지</strong>로 넣어 뒀어요. 처음엔 쉬운 것만 쓰시고, 아쉬울 때 자세한 걸 꺼내 쓰세요.</p></div></div>
+        <div class="note tip"><span class="ic">💡</span><div><b>이 순서대로, 쉬운 것부터</b><p>API 키 → 할당량 이해 → 수집 → 선별 → <strong>디자인</strong> → 화면 → 배포. 특히 <strong>3단계(할당량)를 건너뛰면 첫날 오후에 막힙니다.</strong> 그리고 AI에게 주는 프롬프트는 <strong>전부 「쉬운 버전」과 「자세한 버전」 두 가지</strong>로 넣어 뒀어요. 처음엔 쉬운 것만 쓰시고, 아쉬울 때 자세한 걸 꺼내 쓰세요.</p></div></div>
       </section>
 
       <!-- ===== 2 ===== -->
@@ -431,27 +433,89 @@ node collect.mjs</code></pre>
       </section>
 
       <!-- ===== 6 ===== -->
+      <!-- ===== 6 · 디자인 (신규) ===== -->
       <section id="s6">
         <div class="sec-head">
           <div class="sec-num">6</div>
-          <div><h2>화면 만들기</h2><p>HTML 파일 하나 + 데이터 파일 하나. 이게 전부입니다.</p></div>
+          <div><h2>디자인 먼저 정하기</h2><p>이걸 안 정하면 「AI가 만든 티」가 나는 화면이 나옵니다.</p></div>
         </div>
 
-        <p class="body">복잡한 도구는 필요 없어요. <strong>HTML 파일 한 개</strong>에 화면을, <strong>JSON 파일 한 개</strong>에 영상 목록을 넣습니다. 데이터를 나눠 두면 영상을 추가할 때 화면 코드를 안 건드려도 돼요.</p>
+        <p class="body">그냥 "예쁘게 만들어 줘" 하면 AI는 <strong>늘 비슷한 걸 만듭니다.</strong> 보라색 그라데이션 배경, 이모지 아이콘이 잔뜩 박힌 카드, "스마트하게 관리하세요!" 같은 문구요. 한눈에 <strong>"아, AI가 만들었네"</strong> 싶은 그 화면이에요.</p>
+
+        <p class="body">막는 방법은 간단합니다. <strong>하지 말아야 할 것을 먼저 말해 주면 돼요.</strong></p>
 
         <div class="code">
-          <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> 데이터 파일(videos.json) 생김새</span><button class="copy">복사</button></div>
-          <pre><code>[
-  {
-    "id": "abc123XYZ99",
-    "title": "초등 저학년 교통안전 교육",
-    "cat": "안전교육",
-    "lv": "elem",
-    "dur": 8.5,
-    "desc": "횡단보도 건너는 법을 배우는 애니메이션"
-  }
-]</code></pre>
+          <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> 어느 화면에나 붙이는 디자인 규칙</span><button class="copy">복사</button></div>
+          <pre><code>디자인은 이 규칙을 지켜 줘.
+
+[이건 하지 마]
+- 보라색이나 파란색 그라데이션 배경 (제일 흔한 AI 티야)
+- 이모지를 아이콘 대신 쓰는 것. 화면 전체에 이모지 3개 넘기지 마
+- 모든 걸 흰 카드에 담고 그림자 넣는 것. 카드는 꼭 묶어야 할 때만
+- "스마트한", "간편하게 관리하세요!" 같은 광고 문구
+- 배경을 새하얀 흰색으로 두는 것
+
+[이렇게 해 줘]
+- 색은 딱 하나만 정해서 강조가 필요한 곳에만 써.
+  나머지는 검정·회색 계열로.
+- 배경은 아주 옅은 색을 깔고, 카드만 흰색으로 해.
+  그러면 그림자가 거의 필요 없어.
+- 구분선은 그림자 말고 얇은 선(1px) 하나로.
+- 글자 크기로 중요도를 나눠 줘.
+  제목은 크고 굵게, 설명은 작고 연한 회색으로.
+- 모서리 둥글기는 두 종류만 정해서 끝까지 통일해.
+- 아이콘이 필요하면 이모지 말고 선으로 그린 아이콘을
+  파일 안에 직접 넣어 줘.
+- 한글 글꼴은 Pretendard 써 줘.
+
+[다 만들고 확인해 줘]
+- 휴대폰 크기(가로 375)에서 옆으로 밀리는 곳이 없는지
+- 버튼이 손가락으로 누르기에 충분히 큰지</code></pre>
         </div>
+
+        <div class="note tip"><span class="ic">💡</span><div><b>색은 하나만 고르세요</b><p>초보가 가장 많이 하는 실수가 <strong>색을 여러 개 쓰는 것</strong>이에요. 포인트 색 하나 + 회색 계열이면 충분합니다. 색이 적을수록 오히려 정돈돼 보여요.</p></div></div>
+
+        <h3><span class="e">🎨</span>색 조합 그대로 가져다 쓰기</h3>
+        <p class="body">색을 고르는 게 제일 어렵죠. 제가 쓰는 세 가지를 그대로 드릴게요. <strong>용도에 맞는 걸 골라 프롬프트에 붙여 넣으면</strong> 됩니다.</p>
+
+        <table class="compare">
+          <thead><tr><th>어떤 사이트에</th><th>포인트 색</th><th>배경 색</th><th>느낌</th></tr></thead>
+          <tbody>
+            <tr><th>업무·자료용</th><td><code>#2456A6</code> 남색</td><td><code>#F6F8FB</code></td><td>차분하고 믿음직해요</td></tr>
+            <tr><th>학생·참여형</th><td><code>#E05A1E</code> 주황</td><td><code>#FBF6F1</code></td><td>따뜻하고 활기차요</td></tr>
+            <tr><th>초등·학부모용</th><td><code>#D25980</code> 분홍</td><td><code>#FCF6F8</code></td><td>부드럽고 쉬워 보여요</td></tr>
+          </tbody>
+        </table>
+
+        <div class="code">
+          <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> 색까지 정해서 말하기 (예: 학생용)</span><button class="copy">복사</button></div>
+          <pre><code>색은 이걸로 해 줘.
+
+- 강조색: #E05A1E (마우스 올렸을 때는 #C24A15)
+- 배경색: #FBF6F1
+- 카드는 흰색(#FFFFFF), 테두리는 #EFE2D6 얇은 선
+- 글자색: #2E2418, 설명 같은 보조 글자는 #8A796A
+
+이 색들만 쓰고 다른 색은 넣지 마.
+잘됐다는 표시는 초록(#1D7A4D), 주의는 노랑(#B26B0F),
+오류는 빨강(#C0392B) 이 세 개만 예외로 써도 돼.</code></pre>
+        </div>
+
+        <div class="note info"><span class="ic">ℹ️</span><div><b>이미 만든 화면을 고칠 때</b><p>화면을 다 만든 뒤에 색만 바꾸고 싶다면, AI에게 <strong>"색만 이걸로 바꿔 줘. 구조는 그대로 두고"</strong> 라고 하면 됩니다. 처음부터 다시 만들 필요 없어요.</p></div></div>
+
+        <div class="note warn"><span class="ic">⚠️</span><div><b>"예쁘게 해 줘"는 가장 나쁜 주문이에요</b><p>사람마다 예쁨의 기준이 다르니 AI는 <strong>가장 무난한 것, 즉 남들도 다 쓰는 것</strong>을 고릅니다. 그래서 AI 티가 나는 거예요. <strong>"하지 마"를 세 개만 말해도</strong> 결과가 확 달라집니다.</p></div></div>
+      </section>
+
+      <!-- ===== 7 · 화면 만들기 ===== -->
+      <section id="s7">
+        <div class="sec-head">
+          <div class="sec-num">7</div>
+          <div><h2>화면 만들기</h2><p>파일 두 개면 끝나요. 하나는 화면, 하나는 영상 목록.</p></div>
+        </div>
+
+        <p class="body">복잡한 도구는 필요 없어요. <strong>화면을 그리는 파일 하나</strong>와 <strong>영상 목록이 담긴 파일 하나</strong>, 이렇게 둘로 나눕니다. 나눠 두면 <strong>영상을 추가할 때 화면은 안 건드려도 돼요.</strong> 이게 나중에 정말 편합니다.</p>
+
+        <p class="body">먼저 AI에게 이렇게 부탁하세요. 앞에서 정한 디자인 규칙도 같이 붙여 주면 됩니다.</p>
 
         <div class="code">
           <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> ① 먼저 이렇게 — 쉬운 버전</span><button class="copy">복사</button></div>
@@ -466,7 +530,42 @@ node collect.mjs</code></pre>
 HTML 파일 하나로 만들어 줘. 복잡한 도구는 안 쓰고 싶어.</code></pre>
         </div>
 
-        <p class="body">이 정도면 <strong>쓸 수 있는 화면이 나옵니다.</strong> 써 보다가 "검색이 있으면 좋겠다", "즐겨찾기가 필요하다" 싶을 때 하나씩 덧붙이면 돼요. 아래는 제가 실제로 쓰는 화면의 조건을 전부 적은 것입니다.</p>
+        <p class="body">이 정도면 <strong>쓸 수 있는 화면이 나옵니다.</strong> AI가 <code>videos.json</code> 이라는 파일도 같이 만들어 줄 거예요.</p>
+
+        <h3><span class="e">📋</span>영상 목록 파일은 엑셀 표라고 생각하세요</h3>
+        <p class="body">그 파일을 열어 보면 기호가 많아서 낯설 텐데, <strong>사실은 엑셀 표와 똑같아요.</strong> 한 줄에 영상 하나, 칸마다 제목·주제·길이가 들어갑니다. 컴퓨터가 읽는 형식이라 모양만 다를 뿐이에요.</p>
+
+        <table class="compare">
+          <thead><tr><th>칸 이름</th><th>무슨 뜻인가요</th><th>예시</th></tr></thead>
+          <tbody>
+            <tr><th>id</th><td>유튜브 영상 주소 뒤에 붙는 번호</td><td><code>abc123XYZ99</code></td></tr>
+            <tr><th>title</th><td>영상 제목</td><td>초등 저학년 교통안전 교육</td></tr>
+            <tr><th>cat</th><td>어느 주제로 묶을지</td><td>안전교육</td></tr>
+            <tr><th>lv</th><td>누구용인지</td><td><code>elem</code>=초등, <code>mid</code>=중등</td></tr>
+            <tr><th>dur</th><td>몇 분짜리인지</td><td>8.5 (8분 30초)</td></tr>
+            <tr><th>desc</th><td>한 줄 설명</td><td>횡단보도 건너는 법을 배우는 애니메이션</td></tr>
+          </tbody>
+        </table>
+
+        <p class="body">실제 파일은 이렇게 생겼습니다. <strong>이걸 손으로 쓸 일은 없어요</strong> — 4단계에서 모은 결과를 AI에게 주면 알아서 만들어 줍니다.</p>
+
+        <div class="code">
+          <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> videos.json — 영상 한 편이 이렇게 들어갑니다</span><button class="copy">복사</button></div>
+          <pre><code>[
+  {
+    "id": "abc123XYZ99",
+    "title": "초등 저학년 교통안전 교육",
+    "cat": "안전교육",
+    "lv": "elem",
+    "dur": 8.5,
+    "desc": "횡단보도 건너는 법을 배우는 애니메이션"
+  }
+]</code></pre>
+        </div>
+
+        <div class="note tip"><span class="ic">💡</span><div><b>칸 이름은 마음대로 정해도 돼요</b><p><code>cat</code> 대신 <code>주제</code>, <code>dur</code> 대신 <code>길이</code> 라고 해도 잘 돌아갑니다. 다만 <strong>한 번 정하면 끝까지 같게</strong> 쓰세요. 중간에 바꾸면 화면이 그 칸을 못 찾아요.</p></div></div>
+
+        <p class="body">쓰다 보면 "검색이 있으면 좋겠다", "즐겨찾기가 필요하다" 싶어집니다. 그때 아래를 주세요.</p>
 
         <div class="code">
           <div class="code-top"><span class="label"><span class="dots"><i></i><i></i><i></i></span> ② 기능을 더 붙이려면 — 자세한 버전</span><button class="copy">복사</button></div>
@@ -499,9 +598,9 @@ HTML 파일 하나로 만들어 줘. 복잡한 도구는 안 쓰고 싶어.</cod
       </section>
 
       <!-- ===== 7 ===== -->
-      <section id="s7">
+      <section id="s8">
         <div class="sec-head">
-          <div class="sec-num">7</div>
+          <div class="sec-num">8</div>
           <div><h2>무료로 배포하기</h2><p>깃허브 페이지스를 쓰면 서버 비용 없이 주소가 생깁니다.</p></div>
         </div>
 
@@ -520,9 +619,9 @@ HTML 파일 하나로 만들어 줘. 복잡한 도구는 안 쓰고 싶어.</cod
       </section>
 
       <!-- ===== 8 ===== -->
-      <section id="s8">
+      <section id="s9">
         <div class="sec-head">
-          <div class="sec-num">8</div>
+          <div class="sec-num">9</div>
           <div><h2>망가지지 않게 관리</h2><p>유튜브 영상은 예고 없이 사라집니다. 자동으로 확인하게 만들어 두세요.</p></div>
         </div>
 
